@@ -20,8 +20,39 @@ if(!$result) die ("Database fetch failed: ".mysqli_error($mysqli));
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Validate jss file -->
-    <script src="validateSignUp.js"></script>
-    
+    <!-- <script src="validateSignUp.js"></script> -->
+    <script>
+    function validateForm() {
+      var username = document.forms["signupForm"]["username"].value;
+      var email = document.forms["signupForm"]["email"].value;
+      var password = document.forms["signupForm"]["password"].value;
+      var confirmPassword = document.forms["signupForm"]["confirmPassword"].value;
+      var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+      if (username == "") {
+        alert("Username must be filled out");
+        return false;
+      }
+      if (email == "") {
+        alert("Email must be filled out");
+        return false;
+      } else if (!emailPattern.test(email)) {
+        alert("Email is invalid");
+        return false;
+      }
+      if (password == "") {
+        alert("Password must be filled out");
+        return false;
+      }
+      if (confirmPassword == "") {
+        alert("Confirm password must be filled out");
+        return false;
+      } else if (password != confirmPassword) {
+        alert("Passwords do not match");
+        return false;
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -60,19 +91,21 @@ if(!$result) die ("Database fetch failed: ".mysqli_error($mysqli));
 
     
     <div class="row">
-
-        <form action="add.php" method="post" onsubmit="return validateSignUp(this)">
-            <input type="text" placeholder="Name" class="box" name="name" id="name">
-            <input type="text" placeholder="Address" class="box" name="address" id="address">
-            <input type="tel" placeholder="Phone Number" class="box" name="phone" id="phone">
-            <input type="email" placeholder="Email" class="box" name="email" id="email">
-            <input type="text" placeholder="Age" class="box" name="age" id="age">
-            <input type="text" placeholder="Gender" class="box" name="gender" id="gender">
-            <input type="password" placeholder="Password" class="box" name="password" id="password">
-            
-            <input type="submit" value="SignUp" class="btn" id="submit" name="Submit">
-
-            <div class="or-container">
+    <form name="signupForm" action="add.php" method="post" onsubmit="return validateForm()">
+        
+        <input type="text" placeholder="Name" class="box" name="username" id="username">
+        <input type="text" placeholder="Address" class="box" name="address" id="address">
+        <input type="tel" placeholder="Phone Number" class="box" name="phone" id="phone">
+        <input type="email" placeholder="Email" class="box" name="email" id="email">
+        <input type="text" placeholder="Age" class="box" name="age" id="age">
+        <input type="text" placeholder="Gender" class="box" name="gender" id="gender">
+        <input type="password" placeholder="Password" class="box" name="password" id="password">
+        <input type="password" placeholder="Re-write Password" class="box" id="confirmPassword" name="confirmPassword">
+        <input type="submit" value="Submit" class="btn" id="Submit" name="Submit">
+    
+        
+    
+        <div class="or-container">
                 <div class="line-separator"></div>
                 <div class="or-label">or</div>
                 <div class="line-separator"></div>
@@ -90,54 +123,7 @@ if(!$result) die ("Database fetch failed: ".mysqli_error($mysqli));
 
     </div>
 
-</section>
-<!-- to hide password unless toggled -->
-<script>
-    function myFunction() {
-  var x = document.getElementById("password");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
-</script>
-
-<!-- jQuery and Ajax to validate user credentials
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script language="javascript">
-$(function() {
-// set a event handler to the button
-  $("#submit").click(function() {
-    // Retrieving form data
-    var email = $("#email").val();
-    var pass = $("#password").val();
-
-    // Sending form data to the server side php script.
-    $.ajax({
-        type: "POST",
-        url: "check_records.php",
-        data: { email:email, password:password }
-    }).done(function( data ) {
-
-        // Now the output from PHP is set to 'data'.
-        // Check if the 'data' contains 'OK' or 'NG'
-        if (data.indexOf("OK") >= 0){
-           alert("Login Successed.");
-            //location.href = "ok.html";
-
-        }else if(data.indexOf("NG") >= 0){
-            alert("Login Faild.");
-            //location.href = "ng.html";
-        }
-    });
-  });
-});
-</script> -->
-
-
-
-
+</section> 
 <!-- signup section ends -->
 
 
