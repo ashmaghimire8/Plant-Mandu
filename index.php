@@ -1,3 +1,10 @@
+<?php 
+//including database connection file
+include_once("config2.php");
+$result = mysqli_query($con, "SELECT * FROM feedback ORDER BY id ASC"); //using mysql query instead
+if(!$result) die ("Database fetch failed: ".mysqli_error($mysqli));
+?>
+
 <?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -375,11 +382,11 @@
     <div class="row">
 
         <form action="send.php" method ="post">
-            <input type="text" placeholder="Name" class="box">
-            <input type="email" placeholder="Email" class="box">
-            <input type="number" placeholder="Phone No" class="box">
-            <textarea name="" class="box" placeholder="Message" id="" cols="30" rows="10"></textarea>
-            <button type="submit" value="Submit">Send</button>
+            <input type="text" placeholder="Name" class="box" name="name">
+            <input type="email" placeholder="Email" class="box" name="email">
+            <input type="number" placeholder="Phone No" class="box" name="phone">
+            <textarea name="msg" class="box" placeholder="Message" id="" cols="30" rows="10"></textarea>
+            <button type="submit" value="Submit" name="submit">Send</button>
         </form>
 
         <div class="image">
