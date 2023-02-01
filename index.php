@@ -1,3 +1,10 @@
+<?php 
+//including database connection file
+include_once("config2.php");
+$result = mysqli_query($con, "SELECT * FROM feedback ORDER BY id ASC"); //using mysql query instead
+if(!$result) die ("Database fetch failed: ".mysqli_error($mysqli));
+?>
+
 <?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
