@@ -374,12 +374,12 @@
 
     <div class="row">
 
-        <form action="">
+        <form action="send.php" method ="post">
             <input type="text" placeholder="Name" class="box">
             <input type="email" placeholder="Email" class="box">
             <input type="number" placeholder="Phone No" class="box">
             <textarea name="" class="box" placeholder="Message" id="" cols="30" rows="10"></textarea>
-            <input type="submit" value="Submit" class="btn">
+            <button type="submit" value="Submit">Send</button>
         </form>
 
         <div class="image">
