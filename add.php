@@ -1,6 +1,7 @@
 <?php 
 //including database connection file
 include_once("config.php");
+session_start();
 
 if(isset($_POST["Submit"])){
     $username = mysqli_real_escape_string($mysqli, $_POST['username']);
@@ -21,12 +22,15 @@ if(isset($_POST["Submit"])){
     else{
         //if all the fields are filled(not empty)
         //insert data to database
-        $result = mysqli_query($mysqli, "INSERT INTO `customers`(`username`,`address`,`phone`,`email`,`age`,`gender`,`password`,`confirmPassword`) VALUES('$name','$address','$phone','$email','$age','$gender','$password','$confirmPassword')");
+        $result = mysqli_query($mysqli, "INSERT INTO `customers`(`username`,`address`,`phone`,`email`,`age`,`gender`,`password`) VALUES('$username','$address','$phone','$email','$age','$gender','$password')");
         if (!$result)
             die("Insertion Failed: " . mysqli_error($mysqli));
         //display success message
         echo "<font color = 'green'>Data saved successfully.</font>";
-        header("Location:index.php");
+        $_SESSION['msg'] = "User Successfully Added. Now Login.";
+        header("Location:login.php");
+        exit();
+
     }
 
 }

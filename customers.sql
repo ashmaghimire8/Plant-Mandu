@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
-  `Name` varchar(100) NOT NULL,
+  `Username` varchar(100) NOT NULL,
   `Address` varchar(255) NOT NULL,
   `Phone` varchar(15) NOT NULL,
   `Email` varchar(100) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `Name`, `Address`, `Phone`, `Email`, `Age`, `Gender`, `Password`) VALUES
+INSERT INTO `customers` (`id`, `Username`, `Address`, `Phone`, `Email`, `Age`, `Gender`, `Password`) VALUES
 (1, 'Ashma Ghimire', 'Kalanki', '9859945873', 'ashmaghimire8@gmail.com', 23, 'Female', 'ashma'),
 (2, 'Biplav Poudel', 'Kirtipur', '9869141978', 'biplavpoudel764@gmail.com', 22, 'Male', 'biplav'),
 (3, 'Jeena Maharjan', 'Thankot', '9845945873', 'maharjan.jeena66@gmail.com', 21, 'Female', 'jeena'),
