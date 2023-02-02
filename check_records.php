@@ -25,7 +25,7 @@ if ($count>0){
     if ($pass == $Password){
         $_SESSION['msg'] = "User Verified";
         //echo  "User Verified. <br>Welcome ".$name;
-        $_SESSION['name'] = $row['Name'];
+        $_SESSION['name'] = $row['Username'];
         $_SESSION['id'] = $row['id'];
         //header("Location: login.php");
         //header( "refresh:5;url=index.php" );
